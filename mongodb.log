@@ -369,3 +369,22 @@
 2018-11-09T22:30:23.411+0900 I NETWORK  [conn114] received client metadata from 127.0.0.1:56555 conn114: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14" }, platform: "CPython 3.6.3.final.0" }
 2018-11-09T22:30:23.412+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:56556 #115 (6 connections now open)
 2018-11-09T22:30:23.412+0900 I NETWORK  [conn115] received client metadata from 127.0.0.1:56556 conn115: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14" }, platform: "CPython 3.6.3.final.0" }
+2018-11-09T22:42:25.084+0900 I NETWORK  [conn115] end connection 127.0.0.1:56556 (5 connections now open)
+2018-11-09T22:42:25.084+0900 I NETWORK  [conn114] end connection 127.0.0.1:56555 (4 connections now open)
+2018-11-09T22:42:30.410+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:56741 #116 (5 connections now open)
+2018-11-09T22:42:30.410+0900 I NETWORK  [conn116] received client metadata from 127.0.0.1:56741 conn116: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14" }, platform: "CPython 3.6.3.final.0" }
+2018-11-09T22:42:30.411+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:56742 #117 (6 connections now open)
+2018-11-09T22:42:30.412+0900 I NETWORK  [conn117] received client metadata from 127.0.0.1:56742 conn117: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14" }, platform: "CPython 3.6.3.final.0" }
+2018-11-11T12:29:15.803+0900 I NETWORK  [conn116] end connection 127.0.0.1:56741 (4 connections now open)
+2018-11-11T12:29:15.803+0900 I NETWORK  [conn117] end connection 127.0.0.1:56742 (5 connections now open)
+2018-11-11T12:29:20.299+0900 I NETWORK  [conn20] end connection 127.0.0.1:64868 (3 connections now open)
+2018-11-11T12:29:20.299+0900 I NETWORK  [conn19] end connection 127.0.0.1:64863 (2 connections now open)
+2018-11-11T12:29:30.315+0900 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2018-11-11T12:29:30.316+0900 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2018-11-11T12:29:30.316+0900 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2018-11-11T12:29:30.320+0900 I CONTROL  [signalProcessingThread] Shutting down free monitoring
+2018-11-11T12:29:30.320+0900 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2018-11-11T12:29:30.324+0900 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2018-11-11T12:29:30.447+0900 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2018-11-11T12:29:30.451+0900 I CONTROL  [signalProcessingThread] now exiting
+2018-11-11T12:29:30.451+0900 I CONTROL  [signalProcessingThread] shutting down with code:0

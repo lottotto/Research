@@ -1,7 +1,6 @@
 from flask import Flask, current_app, request, flash,redirect,url_for,render_template
 from flask_pymongo import PyMongo
 from flask_bootstrap import Bootstrap
-from datetime import datetime
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
