@@ -4,9 +4,9 @@ import datetime
 import threading
 import paho.mqtt.client as mqtt
 
-host= "www.ds.se.shibaura-it.ac.jp"
-publish_topic_base =    "/saito/training/201802/shelter/app/"
-subscribe_topic_base =  "/saito/training/201802/shelter/support/"
+host= "XXXX"
+publish_topic_base =    "XXXX"
+subscribe_topic_base =  "XXXX"
 port = 1883
 threads = {}
 
