@@ -1,0 +1,3 @@
+host= "www.ds.se.shibaura-it.ac.jp"
+publish_topic_base =    "/saito/training/201802/shelter/app/"
+subscribe_topic_base =  "/saito/training/201802/shelter/support/"
