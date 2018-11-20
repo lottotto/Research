@@ -7,23 +7,40 @@ from pymongo import MongoClient
 mqtt_host=sys.argv[1]
 mqtt_topic = "/saito/#"
 mongo_client = MongoClient('localhost', 27017)
-db = mongo_client.shelter
-collection = db.shelter
 
 
-def insert_document(message,topic):
+def setting_Mongo(topic):
+    db_name = topic.split('/')[3]
+    collection_name = "_".join(topic.split('/')[1:2])
+    db = mongo_client[db_name]
+    collection = db[collection_name]
+    return db, collection
+
+def insert_questionnaire_data(message, topic):
+    _, collection = setting_Mongo(topic)
     json_data = json.loads(message)
-    shelter_code = topic.split('/')[-1]
-    if len(shelter_code) != 10: #避難所コードは必ず10文字
-        return 0
-    now = datetime.now()
-    print(collection.find_one({"code":shelter_code}))
-
-    if collection.find_one({"code":shelter_code}) is None:
-        collection.insert({"datetime":now,"code":shelter_code,"sensor":json_data})
-        
+    code = topic.split('/')[-1]
+    questionnaire_now = datetime.now()
+    json_data['code'] = code
+    json_data['questionnaire_time'] = questionnaire_now
+    if collection.find_one({"code":code}) is None:
+        collection.insert(json_data)
     else:
-        document = collection.find_one({"code":shelter_code})
+        document = collection.find_one({"code":code})
+        for key, value in json_data.items():
+            document[key] = value
+        collection.save(document)
+
+def insert_sensor_data(message,topic):
+    _, collection = setting_Mongo(topic)
+    code = topic.split('/')[-1]
+    json_data = json.loads(message)
+    sensor_now = datetime.now()
+
+    if collection.find_one({"code":code}) is None:
+        collection.insert({"sensor_time":sensor_now,"code":code,"sensor":json_data})
+    else:
+        document = collection.find_one({"code":code})
         document['sensor'] = json_data
         collection.save(document)
 
@@ -39,13 +56,12 @@ def on_message(client, userdata, msg):
     subscribed_topic = msg.topic
     message = msg.payload.decode()
     print("{}\t{}\t{}".format(now, subscribed_topic, message))
-    insert_document(message,subscribed_topic)
-
-
-def setting_mongoDB():
-    client = MongoClient('localhost', 27017)
-    db = client.shelter
-    collection = db.shelter
+    code = subscribed_topic.split('\')[-1]
+    recieve_data_type = subscribed_topic.split('\')[-2]
+    if recieve_data_type == 'app':
+        insert_questionnaire_data(message, code)
+    elif recieve_data_type == 'sensor':
+        insert_sensor_data(message,subscribed_topic)
 
 
 if __name__ == '__main__':
