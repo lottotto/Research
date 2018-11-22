@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+#Mongo
+/Mongo/*
+mongodb.log*
+#LINEB_BOT
+line_bot/
+
+.ipynb_checkpoints
+**/.DS_Store
+**/.idea
+memo.txt
+src/shelter_data.csv
+
+*.ipynb
