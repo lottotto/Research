@@ -39,7 +39,7 @@ def show_entries(db_name='', collection_name=''):
     if request.method == 'POST':
         send_LINE(user_id=request.form['user_id'], message=request.form['message'])
 
-    return render_template('new_new_index.html', entries=entries, Line_entries=Line_entries)
+    return render_template('index.html', entries=entries, Line_entries=Line_entries)
 
 
 

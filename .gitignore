@@ -6,6 +6,9 @@ mongodb.log*
 #LINEB_BOT
 line_bot/
 
+#html
+src/flaskr/template/old*index.html
+
 .ipynb_checkpoints
 **/.DS_Store
 **/.idea
