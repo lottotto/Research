@@ -7,7 +7,7 @@ mongodb.log*
 line_bot/
 
 #html
-src/flaskr/template/old_index.html
+src/flaskr/templates/old_*index.html
 
 .ipynb_checkpoints
 **/.DS_Store

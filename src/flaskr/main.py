@@ -5,6 +5,7 @@ from flask_bootstrap import Bootstrap
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
+import calc_remarkable
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -20,6 +21,12 @@ def send_LINE(user_id, message):
         pass
 
 def calc_remark(mongo_document):
+    ret_dict = defaultdict(int)
+    temp_key = calc_remarkable.WBGT(tmp=mongo_document['sensor']['tmp'],hum=mongo_document['sensor']['hum'])
+    ret_dict[temp_key] += 1
+    temp_key = calc_remarkable.lack_of_water_risk()
+
+
     tmp = mongo_document['sensor']['tmp']
     if tmp > 38:
         ret_str = "アツゥイ！"
@@ -31,7 +38,7 @@ def make_line_entries(collection_name):
     return [document for document in line_mongo.db[collection_name].find()]
 
 
-@app.route('/<db_name>/<collection_name>/', methods=['GET','POST'])
+@app.route('/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
 def show_entries(db_name='', collection_name=''):
     shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
     entries = [document for document in shelter_mongo.db[collection_name].find()]
@@ -39,7 +46,17 @@ def show_entries(db_name='', collection_name=''):
     if request.method == 'POST':
         send_LINE(user_id=request.form['user_id'], message=request.form['message'])
 
-    return render_template('index.html', entries=entries, Line_entries=Line_entries)
+    return render_template('detail.html', entries=entries, Line_entries=Line_entries)
+
+@app.route('/<db_name>/<collection_name>/summary.html', methods=['GET','POST'])
+def show_entries(db_name='', collection_name=''):
+    shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
+    entries = [document for document in shelter_mongo.db[collection_name].find()]
+    Line_entries = make_line_entries(collection_name)
+    if request.method == 'POST':
+        send_LINE(user_id=request.form['user_id'], message=request.form['message'])
+
+    return render_template('summary.html', entries=entries, Line_entries=Line_entries)
 
 
 
