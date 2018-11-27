@@ -3,7 +3,8 @@ import json
 import paho.mqtt.client as mqtt
 from datetime import datetime
 from pymongo import MongoClient
-
+from calc_remarkable import CalcRemarkProblem
+from collections import defaultdict
 mqtt_host=sys.argv[1]
 mqtt_topic = "/saito/#"
 mongo_client = MongoClient('localhost', 27017)
@@ -17,19 +18,36 @@ def setting_Mongo(topic):
     collection = db[collection_name]
     return db, collection
 
+def analysis_problems(document):
+    problems = CalcRemarkProblem(document).run()
+    if 'problem' in document:
+        temp_dict = defaultdict(int, document['problem'])
+    else:
+        temp_dict = defaultdict(int)
+    for key in problems:
+        temp_dict[key] += 1
+    temp_dict = dict(temp_dict) #defaultdictではMongoDB登録不可能なのでdictに変更
+    del(temp_dict['特になし'])
+    return temp_dict
+
+
+
+
 def insert_questionnaire_data(json_data, topic):
     _, collection = setting_Mongo(topic)
     code = topic.split('/')[-1]
     questionnaire_now = datetime.now().strftime(format_datetime_string)
     json_data['code'] = code
-    json_data['questionnaire_time'] = questionnaire_now
-    if collection.find_one({"code":code}) is None:
+    if collection.find_one({"code":code}) is None:  #初期登録
+        json_data['questionnaire_time'] = questionnaire_now
+        json_data['problem'] = analysis_problems(document=json_data)
         collection.insert(json_data)
-
     else:
         document = collection.find_one({"code":code})
+        json_data['questionnaire_time'] = questionnaire_now
         for key, value in json_data.items():
             document[key] = value
+        document['problem'] = analysis_problems(document=document)
         collection.save(document)
 
 def insert_sensor_data(json_data,topic):
@@ -38,11 +56,14 @@ def insert_sensor_data(json_data,topic):
     sensor_now = datetime.now().strftime(format_datetime_string)
 
     if collection.find_one({"code":code}) is None:
-        collection.insert({"sensor_time":sensor_now,"code":code,"sensor":json_data})
+        document = {"sensor_time":sensor_now,"code":code,"sensor":json_data}
+        document['problem'] = analysis_problems(document)
+        collection.insert(document)
     else:
         document = collection.find_one({"code":code})
         document['sensor'] = json_data
         document['sensor_time'] = sensor_now
+        document['problem'] = analysis_problems(document)
         collection.save(document)
 
 def insert_line_data(json_data, topic):

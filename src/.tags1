@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+os	/Users/home/Desktop/research/program/src/flaskr/main.py	/^import os$/;"	namespace	line:1
+Flask	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from flask import Flask, request, render_template$/;"	namespace	line:2
+request	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from flask import Flask, request, render_template$/;"	namespace	line:2
+render_template	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from flask import Flask, request, render_template$/;"	namespace	line:2
+PyMongo	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from flask_pymongo import PyMongo$/;"	namespace	line:3
+Bootstrap	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from flask_bootstrap import Bootstrap$/;"	namespace	line:4
+LineBotApi	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from linebot import LineBotApi$/;"	namespace	line:5
+TextSendMessage	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from linebot.models import TextSendMessage$/;"	namespace	line:6
+LineBotApiError	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from linebot.exceptions import LineBotApiError$/;"	namespace	line:7
+CalcRemarkProblem	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from calc_remarkable import CalcRemarkProblem$/;"	namespace	line:8
+defaultdict	/Users/home/Desktop/research/program/src/flaskr/main.py	/^from collections import defaultdict$/;"	namespace	line:9
+app	/Users/home/Desktop/research/program/src/flaskr/main.py	/^app = Flask(__name__)$/;"	variable	line:11
+bootstrap	/Users/home/Desktop/research/program/src/flaskr/main.py	/^bootstrap = Bootstrap(app)$/;"	variable	line:12
+shelter_mongo	/Users/home/Desktop/research/program/src/flaskr/main.py	/^shelter_mongo = PyMongo(app, uri="mongodb:\/\/localhost:27017\/shelter")$/;"	variable	line:13
+line_mongo	/Users/home/Desktop/research/program/src/flaskr/main.py	/^line_mongo = PyMongo(app, uri="mongodb:\/\/localhost:27017\/LINE")$/;"	variable	line:14
+line_bot_api	/Users/home/Desktop/research/program/src/flaskr/main.py	/^line_bot_api = LineBotApi(os.environ['LINE_MESSAGE_API_ACCESS_TOKEN'])$/;"	variable	line:15
+send_LINE	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def send_LINE(user_id, message):$/;"	function	line:18
+calc_remark	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def calc_remark(mongo_document):$/;"	function	line:24
+make_document_list	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def make_document_list(db_name, collection_name, search_condition=None):$/;"	function	line:45
+show_entries	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def show_entries(db_name='', collection_name=''):$/;"	function	line:51
+show_summary	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def show_summary(db_name='', collection_name=''):$/;"	function	line:61
+top_page	/Users/home/Desktop/research/program/src/flaskr/main.py	/^def top_page():$/;"	function	line:72

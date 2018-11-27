@@ -80,7 +80,7 @@ class CalcRemarkProblem():
         if self.tmp <= 15 and self.lux > 400 and C_or_D(sleep_items):
             return "睡眠不足リスクあり"
         else:
-            return "特になし"
+            "特になし"
     #路上寝泊まりの実体験から。府中市10月28日、寒くてほぼ寝れず。当時気温は15度ほど
 
 

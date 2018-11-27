@@ -19,31 +19,28 @@
     <a href="./detail.html">詳細情報</a>   <a href="./summary.html">要約情報</a>
     <br>
     <br>
-
-    <div class="table table-striped table-bordered table-hover">
-      <table>
-        <thead>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="col-xl-2">避難所名</th>
+          <th class="col-xl-10">発生課題</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for entry in summary_entries %}
           <tr>
-            <th class="col-xl-2">避難所名</th>
-            <th class="col-xl-10">発生課題</th>
-          </tr>
-          </thead>
-          <tbody>
-            {% for entry in summary_entries %}
-            <tr>
-              <td>{{ entry.name }}</td>
-              {% for problem in summary_entries.problem %}
-              <td>problem</td>
-              {% else %}
-              {% endfor %}
-            </tr>
+            <td>{{ entry.code }}</td>
+            {% for problem in entry.problem %}
+            <td class="col-xl-1">{{ problem }}</td>
             {% else %}
+            <td class="col-xl-1">特にない</td>
             {% endfor %}
-          </tbody>
-
-
-      </table>
-    </div>
+          </tr>
+          {% else %}
+          <td>ない</td>
+          {% endfor %}
+        </tbody>
+    </table>
 
     登録されたLINEIDたち
     <table class = "table table-striped table-bordered table-hover">

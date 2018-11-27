@@ -5,7 +5,8 @@ from flask_bootstrap import Bootstrap
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 from linebot.exceptions import LineBotApiError
-import calc_remarkable
+from calc_remarkable import CalcRemarkProblem
+from collections import defaultdict
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -22,42 +23,49 @@ def send_LINE(user_id, message):
 
 def calc_remark(mongo_document):
     ret_dict = defaultdict(int)
-    temp_key = calc_remarkable.WBGT(tmp=mongo_document['sensor']['tmp'],hum=mongo_document['sensor']['hum'])
-    ret_dict[temp_key] += 1
-    temp_key = calc_remarkable.lack_of_water_risk()
+    calc_problem_instance = CalcRemarkProblem(mongo_document)
+    temp_keys = []
+    temp_keys.append()
+    temp_keys.append(calc_problem_instance.lack_of_water_risk())
+    temp_keys.append(calc_problem_instance.infection_risk())
+    temp_keys.append(calc_problem_instance.lack_of_sleep_risk())
+    temp_keys.append(calc_problem_instance.toilet_risk())
+    temp_keys.append(calc_problem_instance.research_info_risk())
+    continue_problems = mongo_document['problem']
+    for key in temp_keys:
+        continue_problems[key] += 1
+
+    mongo_document['problem'] = continue_problems
+
+    del ret_dict['特になし']
+
+    return {"code":mongo_document['code'], "problem":list(ret_dict.keys())}
 
 
-    tmp = mongo_document['sensor']['tmp']
-    if tmp > 38:
-        ret_str = "アツゥイ！"
-    else:
-        ret_str ="特になし"
-    return ret_str
-
-def make_line_entries(collection_name):
-    return [document for document in line_mongo.db[collection_name].find()]
+def make_document_list(db_name, collection_name, search_condition=None):
+    mongo_app = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
+    return [document for document in mongo_app.db[collection_name].find(search_condition)]
 
 
 @app.route('/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
 def show_entries(db_name='', collection_name=''):
-    shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
-    entries = [document for document in shelter_mongo.db[collection_name].find()]
-    Line_entries = make_line_entries(collection_name)
+    entries = make_document_list(db_name, collection_name)
+    Line_entries = make_document_list('LINE', collection_name)
     if request.method == 'POST':
         send_LINE(user_id=request.form['user_id'], message=request.form['message'])
 
     return render_template('detail.html', entries=entries, Line_entries=Line_entries)
 
+
 @app.route('/<db_name>/<collection_name>/summary.html', methods=['GET','POST'])
-def show_entries(db_name='', collection_name=''):
-    shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
-    entries = [document for document in shelter_mongo.db[collection_name].find()]
-    Line_entries = make_line_entries(collection_name)
+def show_summary(db_name='', collection_name=''):
+    temp_list = make_document_list(db_name, collection_name) #コレクション内にある全ての避難所の状態をリストにしたもの
+    # entries = list(map(calc_remark, temp_list))
+    Line_entries = make_document_list('LINE', collection_name)
     if request.method == 'POST':
         send_LINE(user_id=request.form['user_id'], message=request.form['message'])
 
-    return render_template('summary.html', entries=entries, Line_entries=Line_entries)
-
+    return render_template('summary.html', summary_entries=temp_list, Line_entries=Line_entries)
 
 
 @app.route('/', methods=['GET', "POST"])
