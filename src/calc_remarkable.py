@@ -107,9 +107,12 @@ class CalcRemarkProblem():
         if questionnaire_strtime is None:
             return "情報収拾不安定リスクあり"
         questionnaire_dt = datetime.datetime.strptime(questionnaire_strtime, "%Y-%m-%d-%H:%M:%S")
+        print(datetime.datetime.now() - questionnaire_dt)
         if datetime.datetime.now() - questionnaire_dt > datetime.timedelta(days=2):
+            print("だめみたいですね")
             return "情報収拾不安定リスクあり"
         else:
+            print("114514")
             return "特になし"
 
     def run(self):

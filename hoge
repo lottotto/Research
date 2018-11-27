@@ -1559,3 +1559,124 @@
 2018-11-27T20:34:50.706+0900 I NETWORK  [conn352] received client metadata from 127.0.0.1:50296 conn352: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
 2018-11-27T20:34:50.707+0900 I NETWORK  [conn352] end connection 127.0.0.1:50296 (3 connections now open)
 2018-11-27T20:34:50.707+0900 I NETWORK  [conn351] end connection 127.0.0.1:50295 (2 connections now open)
+2018-11-27T20:36:31.454+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50336 #353 (3 connections now open)
+2018-11-27T20:36:31.454+0900 I NETWORK  [conn353] received client metadata from 127.0.0.1:50336 conn353: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:31.455+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50337 #354 (4 connections now open)
+2018-11-27T20:36:31.455+0900 I NETWORK  [conn354] received client metadata from 127.0.0.1:50337 conn354: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:31.456+0900 I NETWORK  [conn354] end connection 127.0.0.1:50337 (3 connections now open)
+2018-11-27T20:36:31.456+0900 I NETWORK  [conn353] end connection 127.0.0.1:50336 (2 connections now open)
+2018-11-27T20:36:31.457+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50338 #355 (3 connections now open)
+2018-11-27T20:36:31.458+0900 I NETWORK  [conn355] received client metadata from 127.0.0.1:50338 conn355: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:31.459+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50339 #356 (4 connections now open)
+2018-11-27T20:36:31.459+0900 I NETWORK  [conn356] received client metadata from 127.0.0.1:50339 conn356: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:31.460+0900 I NETWORK  [conn356] end connection 127.0.0.1:50339 (3 connections now open)
+2018-11-27T20:36:31.460+0900 I NETWORK  [conn355] end connection 127.0.0.1:50338 (2 connections now open)
+2018-11-27T20:36:32.214+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50341 #357 (3 connections now open)
+2018-11-27T20:36:32.214+0900 I NETWORK  [conn357] received client metadata from 127.0.0.1:50341 conn357: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:32.215+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50342 #358 (4 connections now open)
+2018-11-27T20:36:32.216+0900 I NETWORK  [conn358] received client metadata from 127.0.0.1:50342 conn358: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:32.217+0900 I NETWORK  [conn358] end connection 127.0.0.1:50342 (3 connections now open)
+2018-11-27T20:36:32.217+0900 I NETWORK  [conn357] end connection 127.0.0.1:50341 (2 connections now open)
+2018-11-27T20:36:32.218+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50343 #359 (3 connections now open)
+2018-11-27T20:36:32.218+0900 I NETWORK  [conn359] received client metadata from 127.0.0.1:50343 conn359: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:32.219+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50344 #360 (4 connections now open)
+2018-11-27T20:36:32.219+0900 I NETWORK  [conn360] received client metadata from 127.0.0.1:50344 conn360: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:36:32.220+0900 I NETWORK  [conn360] end connection 127.0.0.1:50344 (3 connections now open)
+2018-11-27T20:36:32.220+0900 I NETWORK  [conn359] end connection 127.0.0.1:50343 (2 connections now open)
+2018-11-27T20:37:52.627+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50375 #361 (3 connections now open)
+2018-11-27T20:37:52.627+0900 I NETWORK  [conn361] received client metadata from 127.0.0.1:50375 conn361: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:52.629+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50376 #362 (4 connections now open)
+2018-11-27T20:37:52.629+0900 I NETWORK  [conn362] received client metadata from 127.0.0.1:50376 conn362: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:52.630+0900 I NETWORK  [conn361] end connection 127.0.0.1:50375 (2 connections now open)
+2018-11-27T20:37:52.630+0900 I NETWORK  [conn362] end connection 127.0.0.1:50376 (3 connections now open)
+2018-11-27T20:37:52.632+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50377 #363 (3 connections now open)
+2018-11-27T20:37:52.632+0900 I NETWORK  [conn363] received client metadata from 127.0.0.1:50377 conn363: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:52.634+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50378 #364 (4 connections now open)
+2018-11-27T20:37:52.634+0900 I NETWORK  [conn364] received client metadata from 127.0.0.1:50378 conn364: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:52.635+0900 I NETWORK  [conn363] end connection 127.0.0.1:50377 (3 connections now open)
+2018-11-27T20:37:52.635+0900 I NETWORK  [conn364] end connection 127.0.0.1:50378 (2 connections now open)
+2018-11-27T20:37:53.250+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50380 #365 (3 connections now open)
+2018-11-27T20:37:53.251+0900 I NETWORK  [conn365] received client metadata from 127.0.0.1:50380 conn365: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:53.252+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50381 #366 (4 connections now open)
+2018-11-27T20:37:53.252+0900 I NETWORK  [conn366] received client metadata from 127.0.0.1:50381 conn366: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:53.253+0900 I NETWORK  [conn366] end connection 127.0.0.1:50381 (3 connections now open)
+2018-11-27T20:37:53.253+0900 I NETWORK  [conn365] end connection 127.0.0.1:50380 (2 connections now open)
+2018-11-27T20:37:53.254+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50382 #367 (3 connections now open)
+2018-11-27T20:37:53.254+0900 I NETWORK  [conn367] received client metadata from 127.0.0.1:50382 conn367: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:53.255+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50383 #368 (4 connections now open)
+2018-11-27T20:37:53.255+0900 I NETWORK  [conn368] received client metadata from 127.0.0.1:50383 conn368: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:53.256+0900 I NETWORK  [conn368] end connection 127.0.0.1:50383 (3 connections now open)
+2018-11-27T20:37:53.256+0900 I NETWORK  [conn367] end connection 127.0.0.1:50382 (2 connections now open)
+2018-11-27T20:37:54.571+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50385 #369 (3 connections now open)
+2018-11-27T20:37:54.571+0900 I NETWORK  [conn369] received client metadata from 127.0.0.1:50385 conn369: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:54.572+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50386 #370 (4 connections now open)
+2018-11-27T20:37:54.573+0900 I NETWORK  [conn370] received client metadata from 127.0.0.1:50386 conn370: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:54.573+0900 I NETWORK  [conn370] end connection 127.0.0.1:50386 (3 connections now open)
+2018-11-27T20:37:54.573+0900 I NETWORK  [conn369] end connection 127.0.0.1:50385 (2 connections now open)
+2018-11-27T20:37:54.575+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50387 #371 (3 connections now open)
+2018-11-27T20:37:54.575+0900 I NETWORK  [conn371] received client metadata from 127.0.0.1:50387 conn371: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:54.576+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50388 #372 (4 connections now open)
+2018-11-27T20:37:54.576+0900 I NETWORK  [conn372] received client metadata from 127.0.0.1:50388 conn372: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:37:54.576+0900 I NETWORK  [conn371] end connection 127.0.0.1:50387 (3 connections now open)
+2018-11-27T20:37:54.576+0900 I NETWORK  [conn372] end connection 127.0.0.1:50388 (2 connections now open)
+2018-11-27T20:44:53.556+0900 I STORAGE  [conn344] createCollection: LINE.201801 with generated UUID: 2a8d288a-d734-42ff-bcf2-ee26584366e0
+2018-11-27T20:45:05.091+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50575 #373 (3 connections now open)
+2018-11-27T20:45:05.091+0900 I NETWORK  [conn373] received client metadata from 127.0.0.1:50575 conn373: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:45:05.092+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50576 #374 (4 connections now open)
+2018-11-27T20:45:05.092+0900 I NETWORK  [conn374] received client metadata from 127.0.0.1:50576 conn374: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:45:05.093+0900 I NETWORK  [conn374] end connection 127.0.0.1:50576 (3 connections now open)
+2018-11-27T20:45:05.093+0900 I NETWORK  [conn373] end connection 127.0.0.1:50575 (2 connections now open)
+2018-11-27T20:45:05.094+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50577 #375 (3 connections now open)
+2018-11-27T20:45:05.095+0900 I NETWORK  [conn375] received client metadata from 127.0.0.1:50577 conn375: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:45:05.095+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50578 #376 (4 connections now open)
+2018-11-27T20:45:05.096+0900 I NETWORK  [conn376] received client metadata from 127.0.0.1:50578 conn376: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:45:05.096+0900 I NETWORK  [conn376] end connection 127.0.0.1:50578 (3 connections now open)
+2018-11-27T20:45:05.096+0900 I NETWORK  [conn375] end connection 127.0.0.1:50577 (2 connections now open)
+2018-11-27T20:47:04.419+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50632 #377 (3 connections now open)
+2018-11-27T20:47:04.419+0900 I NETWORK  [conn377] received client metadata from 127.0.0.1:50632 conn377: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:04.421+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50633 #378 (4 connections now open)
+2018-11-27T20:47:04.421+0900 I NETWORK  [conn378] received client metadata from 127.0.0.1:50633 conn378: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:04.421+0900 I NETWORK  [conn378] end connection 127.0.0.1:50633 (3 connections now open)
+2018-11-27T20:47:04.421+0900 I NETWORK  [conn377] end connection 127.0.0.1:50632 (2 connections now open)
+2018-11-27T20:47:04.423+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50634 #379 (3 connections now open)
+2018-11-27T20:47:04.423+0900 I NETWORK  [conn379] received client metadata from 127.0.0.1:50634 conn379: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:04.424+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50635 #380 (4 connections now open)
+2018-11-27T20:47:04.424+0900 I NETWORK  [conn380] received client metadata from 127.0.0.1:50635 conn380: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:04.425+0900 I NETWORK  [conn380] end connection 127.0.0.1:50635 (3 connections now open)
+2018-11-27T20:47:04.425+0900 I NETWORK  [conn379] end connection 127.0.0.1:50634 (2 connections now open)
+2018-11-27T20:47:14.900+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50642 #381 (3 connections now open)
+2018-11-27T20:47:14.900+0900 I NETWORK  [conn381] received client metadata from 127.0.0.1:50642 conn381: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:14.901+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50643 #382 (4 connections now open)
+2018-11-27T20:47:14.902+0900 I NETWORK  [conn382] received client metadata from 127.0.0.1:50643 conn382: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:14.902+0900 I NETWORK  [conn382] end connection 127.0.0.1:50643 (3 connections now open)
+2018-11-27T20:47:14.902+0900 I NETWORK  [conn381] end connection 127.0.0.1:50642 (2 connections now open)
+2018-11-27T20:47:14.904+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50644 #383 (3 connections now open)
+2018-11-27T20:47:14.904+0900 I NETWORK  [conn383] received client metadata from 127.0.0.1:50644 conn383: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:14.905+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50645 #384 (4 connections now open)
+2018-11-27T20:47:14.905+0900 I NETWORK  [conn384] received client metadata from 127.0.0.1:50645 conn384: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:14.906+0900 I NETWORK  [conn384] end connection 127.0.0.1:50645 (3 connections now open)
+2018-11-27T20:47:14.906+0900 I NETWORK  [conn383] end connection 127.0.0.1:50644 (2 connections now open)
+2018-11-27T20:47:53.747+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50663 #385 (3 connections now open)
+2018-11-27T20:47:53.747+0900 I NETWORK  [conn385] received client metadata from 127.0.0.1:50663 conn385: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:53.749+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50664 #386 (4 connections now open)
+2018-11-27T20:47:53.749+0900 I NETWORK  [conn386] received client metadata from 127.0.0.1:50664 conn386: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:53.750+0900 I NETWORK  [conn386] end connection 127.0.0.1:50664 (3 connections now open)
+2018-11-27T20:47:53.750+0900 I NETWORK  [conn385] end connection 127.0.0.1:50663 (2 connections now open)
+2018-11-27T20:47:53.752+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50665 #387 (3 connections now open)
+2018-11-27T20:47:53.752+0900 I NETWORK  [conn387] received client metadata from 127.0.0.1:50665 conn387: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:53.754+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50666 #388 (4 connections now open)
+2018-11-27T20:47:53.754+0900 I NETWORK  [conn388] received client metadata from 127.0.0.1:50666 conn388: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:47:53.755+0900 I NETWORK  [conn388] end connection 127.0.0.1:50666 (3 connections now open)
+2018-11-27T20:47:53.755+0900 I NETWORK  [conn387] end connection 127.0.0.1:50665 (2 connections now open)
+2018-11-27T20:48:09.297+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50671 #389 (3 connections now open)
+2018-11-27T20:48:09.297+0900 I NETWORK  [conn389] received client metadata from 127.0.0.1:50671 conn389: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:48:09.298+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50672 #390 (4 connections now open)
+2018-11-27T20:48:09.298+0900 I NETWORK  [conn390] received client metadata from 127.0.0.1:50672 conn390: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:48:09.299+0900 I NETWORK  [conn389] end connection 127.0.0.1:50671 (2 connections now open)
+2018-11-27T20:48:09.299+0900 I NETWORK  [conn390] end connection 127.0.0.1:50672 (3 connections now open)
+2018-11-27T20:48:09.300+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50673 #391 (3 connections now open)
+2018-11-27T20:48:09.301+0900 I NETWORK  [conn391] received client metadata from 127.0.0.1:50673 conn391: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:48:09.302+0900 I NETWORK  [listener] connection accepted from 127.0.0.1:50674 #392 (4 connections now open)
+2018-11-27T20:48:09.302+0900 I NETWORK  [conn392] received client metadata from 127.0.0.1:50674 conn392: { driver: { name: "PyMongo", version: "3.7.1" }, os: { type: "Darwin", name: "Darwin", architecture: "x86_64", version: "10.14.1" }, platform: "CPython 3.6.3.final.0" }
+2018-11-27T20:48:09.303+0900 I NETWORK  [conn392] end connection 127.0.0.1:50674 (3 connections now open)
+2018-11-27T20:48:09.303+0900 I NETWORK  [conn391] end connection 127.0.0.1:50673 (2 connections now open)

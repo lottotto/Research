@@ -29,7 +29,7 @@
         <tbody>
           {% for entry in summary_entries %}
           <tr>
-            <td>{{ entry.code }}</td>
+            <td>{{ entry.name }}</td>
             {% for problem in entry.problem %}
             <td class="col-xl-1">{{ problem }}</td>
             {% else %}
@@ -54,7 +54,7 @@
       <tbody>
         {% for line in Line_entries %}
         <tr>
-          <form class="" action="./" method="post">
+          <form class="" action="" method="post">
             <input type="hidden" name="user_id" value={{ line.user_id }}>
             <td class="col-lg-1">{{ line.user_name }}</td>
             <td><input type="text" name="message" class="form-control"></td>
