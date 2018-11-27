@@ -87,7 +87,7 @@ def on_connect(client, userdata, flags, respons_code):
 def on_message(client, userdata, msg):
     now = datetime.now().strftime(format_datetime_string)
     receive_json_data = json.loads(msg.payload.decode())
-    print("{}\t{}\t{}".format(now, msg.topic, msg.payload))
+    print("{}\t{}\t{}".format(now, msg.topic, msg.payload.decode()))
 
     recieve_data_type = msg.topic.split('/')[-2]
     if recieve_data_type == 'app':

@@ -2,7 +2,7 @@ import datetime
 
 
 def C_or_D(param):
-    if param == 'C' or param == 'D':
+    if param == 'C' or param == 'D' or param == "0":
         return True
     else:
         return False
@@ -55,6 +55,8 @@ class CalcRemarkProblem():
             return "特になし"
         if self.tmp >= 30 and self.hum <=40 and C_or_D(drink_water):
             return "水消費量増大リスク"
+        else:
+            return "特になし"
 
     #感染症リスクの計算
     def infection_risk(self):
@@ -62,7 +64,9 @@ class CalcRemarkProblem():
             return "特になし"
         None_filter = lambda x:x is not None
         temp_list = [self.document.get('sp0'+str(x+1)) for x in range(4)] + [self.document.get('vi0'+str(x+1)) for x in range(3)]
-        infect_number = sum(list(filter(None_filter, temp_list)))
+        #temp_list = list(map(int, temp_list))
+        temp_list = list(filter(None_filter, temp_list))
+        infect_number = sum(list(map(int, temp_list)))
 
         if self.tmp <= 20 and self.hum <= 40 and infect_number:
             return "感染症蔓延リスクあり"
@@ -77,7 +81,7 @@ class CalcRemarkProblem():
         sleep_items = self.document.get('en02')
         if is_None(self.tmp, self.lux, sleep_items) == True:
             return "特になし"
-        if self.tmp <= 15 and self.lux > 400 and C_or_D(sleep_items):
+        elif self.tmp <= 15 and self.lux > 400 and C_or_D(sleep_items):
             return "睡眠不足リスクあり"
         else:
             return "特になし"
