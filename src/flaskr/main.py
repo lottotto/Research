@@ -21,26 +21,6 @@ def send_LINE(user_id, message):
     except LineBotApiError as e:
         pass
 
-def calc_remark(mongo_document):
-    ret_dict = defaultdict(int)
-    calc_problem_instance = CalcRemarkProblem(mongo_document)
-    temp_keys = []
-    temp_keys.append()
-    temp_keys.append(calc_problem_instance.lack_of_water_risk())
-    temp_keys.append(calc_problem_instance.infection_risk())
-    temp_keys.append(calc_problem_instance.lack_of_sleep_risk())
-    temp_keys.append(calc_problem_instance.toilet_risk())
-    temp_keys.append(calc_problem_instance.research_info_risk())
-    continue_problems = mongo_document['problem']
-    for key in temp_keys:
-        continue_problems[key] += 1
-
-    mongo_document['problem'] = continue_problems
-
-    del ret_dict['特になし']
-
-    return {"code":mongo_document['code'], "problem":list(ret_dict.keys())}
-
 
 def make_document_list(db_name, collection_name, search_condition=None):
     mongo_app = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
@@ -48,7 +28,7 @@ def make_document_list(db_name, collection_name, search_condition=None):
 
 
 @app.route('/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
-def show_entries(db_name='', collection_name=''):
+def show_detail(db_name='', collection_name=''):
     entries = make_document_list(db_name, collection_name)
     Line_entries = make_document_list('LINE', collection_name)
     if request.method == 'POST':
