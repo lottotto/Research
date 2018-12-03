@@ -114,9 +114,6 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print(register_flag_dict)
-    print(change_mode_flag_dict)
-    print(change_event_flag_dict)
     user_id = event.source.user_id
     if event.message.text == '登録':
         registration_process(event)
