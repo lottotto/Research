@@ -77,7 +77,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    # app.logger.info("Request body: " + body)
 
     # handle webhook body
     try:
@@ -89,7 +89,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
+    print(register_flag_dict)
+    print(change_mode_flag_dict)
+    print(change_event_flag_dict)
     user_id = event.source.user_id
     if event.message.text == '登録':
         line_bot_functions.registration_process(event)
@@ -116,7 +118,7 @@ def handle_message(event):
         change_event_flag_dict[user_id]['flag'] = False
 
     elif event.message.text == 'トピック確認':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=get_topic(event.source.user_id)))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=line_bot_functions.get_topic(event.source.user_id)))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="「登録」と入力してください。"))
 
