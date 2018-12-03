@@ -10,7 +10,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from linebot.exceptions import LineBotApiError, InvalidSignatureError
 from calc_remarkable import CalcRemarkProblem
 from collections import defaultdict
-import line_bot_functions
 
 env_data = json.load(open(sys.argv[1],'r'))
 app = Flask(__name__)
@@ -39,6 +38,31 @@ def make_document_list(db_name, collection_name, search_condition=None):
     mongo_app = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
     return [document for document in mongo_app.db[collection_name].find(search_condition)]
 
+#LineBot部分
+def registration_process(event):
+    register_flag_dict[event.source.user_id] = True
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="名前を入力してください"))
+
+def change_mode(event):
+    change_mode_flag_dict[event.source.user_id]['flag'] = True
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="モードコードを入力してください"))
+
+def change_event(event):
+    change_event_flag_dict[event.source.user_id]['flag'] = True
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="イベントコードを入力してください"))
+
+
+def get_topic(user_id):
+    mode = change_mode_flag_dict[user_id]["mode"]
+    event = change_event_flag_dict[user_id]["event"]
+    return "/saito/{}/{}/shelter/line/XXXXX".format(mode, event)
+
+def publish(host,topic, message):
+    mqtt_client = mqtt.Client()
+    mqtt_client.connect(host=host)
+    mqtt_client.publish(topic, message)
+    mqtt_client.disconnect()
+#Line_Bot部分終了
 
 @app.route('/shelter/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
 def show_detail(db_name='', collection_name=''):
@@ -94,16 +118,16 @@ def handle_message(event):
     print(change_event_flag_dict)
     user_id = event.source.user_id
     if event.message.text == '登録':
-        line_bot_functions.registration_process(event)
+        registration_process(event)
     elif event.message.text == 'モード変更':
-        line_bot_functions.change_mode(event)
+        change_mode(event)
     elif event.message.text == 'イベント変更':
-        line_bot_functions.change_event(event)
+        change_event(event)
 
     elif register_flag_dict[user_id]:
         send_message = json.dumps({"user_name":event.message.text, "user_id":event.source.user_id})
-        topic = line_bot_functions.get_topic(event.source.user_id)
-        line_bot_functions.publish(env_data['MQTT_BROKER_ADDRESS'], topic, send_message)
+        topic = get_topic(event.source.user_id)
+        publish(env_data['MQTT_BROKER_ADDRESS'], topic, send_message)
         register_flag_dict[user_id] = False
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="トピック:{}\nユーザー名:{}で登録しました".format(topic, event.message.text)))
 
@@ -118,7 +142,7 @@ def handle_message(event):
         change_event_flag_dict[user_id]['flag'] = False
 
     elif event.message.text == 'トピック確認':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=line_bot_functions.get_topic(event.source.user_id)))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=get_topic(event.source.user_id)))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="「登録」と入力してください。"))
 
