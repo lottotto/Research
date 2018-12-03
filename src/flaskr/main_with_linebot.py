@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import logging
 from flask import Flask, request, render_template
 from flask_pymongo import PyMongo
 from flask_bootstrap import Bootstrap
@@ -13,6 +14,8 @@ import line_bot_functions
 
 env_data = json.load(open(sys.argv[1],'r'))
 app = Flask(__name__)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.INFO)
 bootstrap = Bootstrap(app)
 shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/shelter")
 line_mongo = PyMongo(app, uri="mongodb://localhost:27017/LINE")
