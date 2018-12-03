@@ -12,7 +12,7 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 shelter_mongo = PyMongo(app, uri="mongodb://localhost:27017/shelter")
 line_mongo = PyMongo(app, uri="mongodb://localhost:27017/LINE")
-line_bot_api = LineBotApi(os.environ['LINE_MESSAGE_API_ACCESS_TOKEN'])
+line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
 
 
 def send_LINE(user_id, message):
@@ -53,4 +53,4 @@ def top_page():
     return "URLにdb_nameとcollection_nameをつけてね"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8080)
