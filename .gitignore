@@ -13,5 +13,6 @@ hoge
 **/.idea
 memo.txt
 src/shelter_data.csv
+src/data_shelter.csv
 
 *.ipynb
