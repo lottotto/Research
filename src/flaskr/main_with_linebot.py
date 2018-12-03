@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import logging
+import paho.mqtt.client as mqtt
 from flask import Flask, request, render_template
 from flask_pymongo import PyMongo
 from flask_bootstrap import Bootstrap
