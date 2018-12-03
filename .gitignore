@@ -2,6 +2,7 @@
 __pycache__/
 #Mongo
 /Mongo/*
+!.git_keep
 mongodb.log*
 #LINEB_BOT
 hoge
@@ -18,3 +19,4 @@ src/.tags
 src/.tags1
 sub_log
 *.ipynb
+setup.sh
