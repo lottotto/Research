@@ -14,5 +14,7 @@ hoge
 memo.txt
 src/shelter_data.csv
 src/data_shelter.csv
-
+src/.tags
+src/.tags1
+sub_log
 *.ipynb
