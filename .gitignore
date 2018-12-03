@@ -4,7 +4,6 @@ __pycache__/
 /Mongo/*
 mongodb.log*
 #LINEB_BOT
-line_bot/
 hoge
 #html
 src/flaskr/templates/old_*index.html

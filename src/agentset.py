@@ -6,9 +6,9 @@ import json
 from agentbase import AgentBase
 import pandas as pd
 
-host= "www.ds.se.shibaura-it.ac.jp"
-publish_topic_base =    "/saito/test/201801/shelter/app/"
-subscribe_topic_base =  "/saito/test/201801/shelter/support/"
+host= "XXXX"
+publish_topic_base =    "/saito/test/201803/shelter/app/"
+subscribe_topic_base =  "/saito/test/201803/shelter/support/"
 port = 1883
 
 class AgentSet():
