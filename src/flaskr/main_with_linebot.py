@@ -98,7 +98,7 @@ def handle_message(event):
     elif register_flag_dict[user_id]:
         send_message = json.dumps({"user_name":event.message.text, "user_id":event.source.user_id})
         topic = line_bot_functions.get_topic(event.source.user_id)
-        line_bot_functions.publish(host=env_data['MQTT_BROKER_ADDRESS'], topic, send_message)
+        line_bot_functions.publish(env_data['MQTT_BROKER_ADDRESS'], topic, send_message)
         register_flag_dict[user_id] = False
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="トピック:{}\nユーザー名:{}で登録しました".format(topic, event.message.text)))
 
