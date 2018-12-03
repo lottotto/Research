@@ -20,3 +20,4 @@ src/.tags1
 sub_log
 *.ipynb
 setup.sh
+env_data.json

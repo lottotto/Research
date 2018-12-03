@@ -27,7 +27,7 @@ def make_document_list(db_name, collection_name, search_condition=None):
     return [document for document in mongo_app.db[collection_name].find(search_condition)]
 
 
-@app.route('/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
+@app.route('shelter/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
 def show_detail(db_name='', collection_name=''):
     entries = make_document_list(db_name, collection_name)
     Line_entries = make_document_list('LINE', collection_name)
@@ -37,7 +37,7 @@ def show_detail(db_name='', collection_name=''):
     return render_template('detail.html', entries=entries, Line_entries=Line_entries)
 
 
-@app.route('/<db_name>/<collection_name>/summary.html', methods=['GET','POST'])
+@app.route('shelter/<db_name>/<collection_name>/summary.html', methods=['GET','POST'])
 def show_summary(db_name='', collection_name=''):
     temp_list = make_document_list(db_name, collection_name) #コレクション内にある全ての避難所の状態をリストにしたもの
     # entries = list(map(calc_remark, temp_list))
