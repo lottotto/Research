@@ -18,6 +18,24 @@ format_datetime_string = "%Y-%m-%d-%H:%M:%S"
 
 # In[3]:
 
+def analysis(document):
+    def calc_WBGT(tmp, hum):
+        WBGT = 0.735 * tmp + 0.0374 * hum + 0.00292 * tmp * hum
+        # if WBGT >= 31:
+        #     return "暑さ警戒度:{}".format("危険")
+        # elif WBGT >=28:
+        #     return "暑さ警戒度:{}".format("厳重警戒")
+        # elif WBGT >= 25:
+        #     return "暑さ警戒度:{}".format("警戒")
+        if WBGT >= 21:
+            return "暑さ警戒"
+        else:
+            return "特になし"
+
+    ret_list = []
+    WBGT = calc_WBGT(document['sensor']['tmp'], document['sensor']['hum'])
+    ret_list.append(WBGT)
+    return ret_list
 
 
 class CalcRemarkProblem():
@@ -157,7 +175,8 @@ def setting_Mongo(topic):
 
 
 def analysis_problems(document):
-    problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
+    problem = analysis(document)
+    # problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
     print("analysis:", problems)
     return problems
 
@@ -217,7 +236,7 @@ def publish_recode(topic):
     code = topic.split('/')[-1]
     document = collection.find_one({"code":code})
     del document['_id']
-    # document['problem'] = analysis_problems(document)
+    document['problem'] = analysis_problems(document)
     pub_message = json.dumps(document)
     pub_topic = re.sub("sensor|app", "recode", topic)
     publish(host=mqtt_host, topic=pub_topic, message=pub_message)
