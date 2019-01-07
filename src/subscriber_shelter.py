@@ -21,7 +21,7 @@ format_datetime_string = "%Y-%m-%d-%H:%M:%S"
 def analysis(document):
     def calc_WBGT(tmp, hum):
         print(tmp, hum)
-        WBGT = 0.735 * tmp + 0.0374 * hum + 0.00292 * tmp * hum
+        WBGT = (0.735*tmp) + (0.0374*hum) + (0.00292*tmp*hum)
         # if WBGT >= 31:
         #     return "暑さ警戒度:{}".format("危険")
         # elif WBGT >=28:
