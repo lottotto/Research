@@ -36,7 +36,7 @@ def analysis(document):
             return "特になし"
 
     ret_list = []
-    WBGT = calc_WBGT(document['sensor']['tmp'], document['sensor']['hum'])
+    WBGT = calc_WBGT(float(document['sensor']['tmp']), float(document['sensor']['hum']))
     ret_list.append(WBGT)
     print(ret_list)
     return ret_list
@@ -49,10 +49,10 @@ class CalcRemarkProblem():
         self.document = mongo_document
         self.sensor = mongo_document.get('sensor') #Noneメソッドは.getを持たないので、一度これを挟む
         if self.sensor is not None:
-            self.tmp = self.sensor['tmp']
-            self.hum = self.sensor['hum']
-            self.lux = self.sensor['lux']
-            self.co2 = self.sensor['co2']
+            self.tmp = float(self.sensor['tmp'])
+            self.hum = float(self.sensor['hum'])
+            self.lux = int(self.sensor['lux'])
+            self.co2 = int(self.sensor['co2'])
         else:
             self.tmp = None
             self.hum = None
