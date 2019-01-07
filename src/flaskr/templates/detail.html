@@ -39,7 +39,7 @@
               <tr>
                 <td>{{ entry.name }}</td>
                 <td>{{ entry.code }}</td>
-                <td>{{ entry.sensor_time }}</td>
+                <td>{{ entry.sensor.time }}</td>
                 <td>{{ entry.sensor.tmp }}</td>
                 <td>{{ entry.sensor.hum }}</td>
                 <td>{{ entry.sensor.lux }}</td>
@@ -73,7 +73,7 @@
               <tr>
                 <td>{{ entry.name }}</td>
                 <td>{{ entry.code }}</td>
-                <td>{{ entry.questionnaire_time }}</td>
+                <td>{{ entry.datetime }}</td>
                 <td>{{ entry.capacity }}</td>
                 <td>{{ entry.in01 }}</td>
                 <td>{{ entry.in02 }}</td>
@@ -106,6 +106,7 @@
               <th>データ通信</th>
               <th>救護所設置</th>
               <th>医療チーム巡回</th>
+              <th>避難所運営組織</th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +114,7 @@
             <tr>
               <td>{{ entry.name }}</td>
               <td>{{ entry.code }}</td>
-              <td>{{ entry.questionnaire_time}}</td>
+              <td>{{ entry.datetime}}</td>
               <td>{{ entry.il01 }}</td>
               <td>{{ entry.il02 }}</td>
               <td>{{ entry.il03 }}</td>
@@ -125,6 +126,7 @@
               <td>{{ entry.il10 }}</td>
               <td>{{ entry.im01 }}</td>
               <td>{{ entry.im02 }}</td>
+              <td>{{ entry.im03 }}</td>
             </tr>
             {% else %}
             <td>避難所が登録されれいません</td>
@@ -155,7 +157,7 @@
             <tr>
               <td>{{ entry.name }}</td>
               <td>{{ entry.code }}</td>
-              <td>{{ entry.questionnaire_time}}</td>
+              <td>{{ entry.date}}</td>
               <td>{{ entry.en01 }}</td>
               <td>{{ entry.en02 }}</td>
               <td>{{ entry.en03 }}</td>
@@ -196,7 +198,6 @@
               <th>うち外国人</th>
               <th>インフルエンザ</th>
               <th>感染性胃腸炎</th>
-              <th>食中毒</th>
             </tr>
           </thead>
           <tbody>
@@ -204,7 +205,7 @@
             <tr>
               <td>{{ entry.name }}</td>
               <td>{{ entry.code }}</td>
-              <td>{{ entry.questionnaire_time}}</td>
+              <td>{{ entry.datetime}}</td>
               <td>{{ entry.sp01 }}</td>
               <td>{{ entry.sp02 }}</td>
               <td>{{ entry.sp03 }}</td>
@@ -222,7 +223,6 @@
               <td>{{ entry.as04 }}</td>
               <td>{{ entry.vi01 }}</td>
               <td>{{ entry.vi02 }}</td>
-              <td>{{ entry.vi03 }}</td>
             </tr>
             {% else %}
             <td>避難所が登録されていません</td>

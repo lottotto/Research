@@ -2,6 +2,7 @@
 __pycache__/
 #Mongo
 /Mongo/*
+/Mongo2/*
 !.git_keep
 mongodb.log*
 #LINEB_BOT

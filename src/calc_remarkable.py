@@ -120,4 +120,6 @@ class CalcRemarkProblem():
         ret_list.append(self.lack_of_sleep_risk())
         ret_list.append(self.toilet_risk())
         ret_list.append(self.research_info_risk())
+        ret_list = list(set(ret_list))#特になしの重複を削除し、残った特になしを削除
+        ret_list.remove('特になし')
         return ret_list
