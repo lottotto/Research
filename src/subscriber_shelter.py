@@ -217,7 +217,7 @@ def publish_recode(topic):
     code = topic.split('/')[-1]
     document = collection.find_one({"code":code})
     del document['_id']
-    document['problem'] = analysis_problems(document)
+    # document['problem'] = analysis_problems(document)
     pub_message = json.dumps(document)
     pub_topic = re.sub("sensor|app", "recode", topic)
     publish(host=mqtt_host, topic=pub_topic, message=pub_message)
