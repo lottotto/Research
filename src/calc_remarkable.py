@@ -1,18 +1,5 @@
 import datetime
 
-
-def C_or_D(param):
-    if param == 'C' or param == 'D' or param == "0":
-        return True
-    else:
-        return False
-
-def is_None(self, *args):
-    if None in args:
-        return True
-    else:
-        False
-
 class CalcRemarkProblem():
     def __init__(self, mongo_document):
 
@@ -31,8 +18,21 @@ class CalcRemarkProblem():
             self.co2 = None
 
     #熱中症リスクの計算
+
+    def C_or_D(param):
+        if param == 'C' or param == 'D' or param == "0":
+            return True
+        else:
+            return False
+
+    def is_None(self, *args):
+        if None in args:
+            return True
+        else:
+            False
+
     def WBGT(self):
-        if is_None(self.tmp, self.hum) == True:
+        if self.is_None(self.tmp, self.hum) == True:
             return "特になし"
         WBGT = 0.735*self.tmp+0.0374*self.hum+0.00292*self.tmp*self.hum
         if WBGT >= 31:
@@ -51,16 +51,16 @@ class CalcRemarkProblem():
     #水不足リスクの計算
     def lack_of_water_risk(self):
         drink_water=self.document.get('il01')
-        if is_None(self.tmp, self.hum, drink_water) == True:
+        if self.is_None(self.tmp, self.hum, drink_water) == True:
             return "特になし"
-        if self.tmp >= 30 and self.hum <=40 and C_or_D(drink_water):
+        if self.tmp >= 30 and self.hum <=40 and self.C_or_D(drink_water):
             return "水消費量増大リスク"
         else:
             return "特になし"
 
     #感染症リスクの計算
     def infection_risk(self):
-        if is_None(self.tmp, self.hum, self.co2) == True:
+        if self.is_None(self.tmp, self.hum, self.co2) == True:
             return "特になし"
         None_filter = lambda x:x is not None
         temp_list = [self.document.get('sp0'+str(x+1)) for x in range(4)] + [self.document.get('vi0'+str(x+1)) for x in range(3)]
@@ -79,9 +79,9 @@ class CalcRemarkProblem():
     #睡眠不足リスクの計算
     def lack_of_sleep_risk(self):
         sleep_items = self.document.get('en02')
-        if is_None(self.tmp, self.lux, sleep_items) == True:
+        if self.is_None(self.tmp, self.lux, sleep_items) == True:
             return "特になし"
-        elif self.tmp <= 15 and self.lux > 400 and C_or_D(sleep_items):
+        elif self.tmp <= 15 and self.lux > 400 and self.C_or_D(sleep_items):
             return "睡眠不足リスクあり"
         else:
             return "特になし"
@@ -93,9 +93,9 @@ class CalcRemarkProblem():
         domestic_water = self.document.get('il06')
         cleaning_toilet= self.document.get('il03')
         sewage         = self.document.get('en07')
-        if is_None(domestic_water, cleaning_toilet, sewage) == True:
+        if self.is_None(domestic_water, cleaning_toilet, sewage) == True:
             return "特になし"
-        if C_or_D(domestic_water) and C_or_D(cleaning_toilet) and C_or_D(sewage):
+        if self.self.C_or_D(domestic_water) and self.C_or_D(cleaning_toilet) and self.C_or_D(sewage):
             return "トイレのリスクあり"
         else:
             return "特になし"
