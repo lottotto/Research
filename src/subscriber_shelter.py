@@ -8,7 +8,7 @@ import datetime
 import paho.mqtt.client as mqtt
 from datetime import datetime as dt
 from pymongo import MongoClient
-# from calc_remarkable import CalcRemarkProblem
+from calc_remarkable import CalcRemarkProblem
 from collections import defaultdict
 mqtt_host = sys.argv[1]
 mqtt_topic = "/saito/#"
@@ -41,7 +41,7 @@ def analysis(document):
     print(ret_list)
     return ret_list
 
-
+'''
 class CalcRemarkProblem():
     def __init__(self, mongo_document):
 
@@ -165,7 +165,7 @@ class CalcRemarkProblem():
         ret_list = list(set(ret_list))#特になしの重複を削除し、残った特になしを削除
         ret_list.remove('特になし')
         return ret_list
-
+'''
 
 def setting_Mongo(topic):
     db_name = "sub_" + topic.split('/')[2] #sub_test, sub_training, sub_default
@@ -180,8 +180,8 @@ def setting_Mongo(topic):
 
 def analysis_problems(document):
     print("ana_pro", document)
-    problems = analysis(document)
-    # problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
+    # problems = analysis(document)
+    problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
     print("analysis:", problems)
     return problems
 
