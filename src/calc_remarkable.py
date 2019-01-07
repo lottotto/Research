@@ -19,7 +19,7 @@ class CalcRemarkProblem():
 
     #熱中症リスクの計算
 
-    def C_or_D(param):
+    def C_or_D(self, param):
         if param == 'C' or param == 'D' or param == "0":
             return True
         else:
@@ -95,7 +95,7 @@ class CalcRemarkProblem():
         sewage         = self.document.get('en07')
         if self.is_None(domestic_water, cleaning_toilet, sewage) == True:
             return "特になし"
-        if self.self.C_or_D(domestic_water) and self.C_or_D(cleaning_toilet) and self.C_or_D(sewage):
+        if self.C_or_D(domestic_water) and self.C_or_D(cleaning_toilet) and self.C_or_D(sewage):
             return "トイレのリスクあり"
         else:
             return "特になし"
