@@ -28,6 +28,7 @@ def analysis(document):
         #     return "暑さ警戒度:{}".format("厳重警戒")
         # elif WBGT >= 25:
         #     return "暑さ警戒度:{}".format("警戒")
+        print(WBGT)
         if WBGT >= 21:
             return "暑さ警戒"
         else:
@@ -36,6 +37,7 @@ def analysis(document):
     ret_list = []
     WBGT = calc_WBGT(document['sensor']['tmp'], document['sensor']['hum'])
     ret_list.append(WBGT)
+    print(ret_list)
     return ret_list
 
 
