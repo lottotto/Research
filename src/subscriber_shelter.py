@@ -20,6 +20,7 @@ format_datetime_string = "%Y-%m-%d-%H:%M:%S"
 
 def analysis(document):
     def calc_WBGT(tmp, hum):
+        print(tmp, hum)
         WBGT = 0.735 * tmp + 0.0374 * hum + 0.00292 * tmp * hum
         # if WBGT >= 31:
         #     return "暑さ警戒度:{}".format("危険")
@@ -175,7 +176,8 @@ def setting_Mongo(topic):
 
 
 def analysis_problems(document):
-    problem = analysis(document)
+    print("ana_pro", document)
+    problems = analysis(document)
     # problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
     print("analysis:", problems)
     return problems
@@ -236,6 +238,7 @@ def publish_recode(topic):
     code = topic.split('/')[-1]
     document = collection.find_one({"code":code})
     del document['_id']
+    print(document)
     document['problem'] = analysis_problems(document)
     pub_message = json.dumps(document)
     pub_topic = re.sub("sensor|app", "recode", topic)
