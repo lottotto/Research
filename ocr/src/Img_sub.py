@@ -3,15 +3,13 @@ import base64
 from datetime import datetime as dt
 import os
 import sys
-import json
 import MAIN
 import CastResult_Publish
 
-env_data = json.load(open(sys.argv[1],'r'))
-host = env_data["host"]
+host = sys.argv[1]
 port = 1883
-topic =env_data["topic"]
-store_path = env_data["store_path"]
+topic =sys.argv[2]
+StorePath = sys.argv[3]
 PathToCastDefCsv = './Resource/CastDef.csv'
 PathToSheatStyle = './Resource/OCR_style.csv'
 # topic /disfor/training/18000/shelter/pic
@@ -19,12 +17,12 @@ PathToSheatStyle = './Resource/OCR_style.csv'
 def makeStoreDir(subTopic):
     LayterList = list(filter(lambda str:str != '', subTopic.split('/')))
     try:
-        os.mkdir(store_path)
+        os.mkdir(StorePath)
     except:
         pass
-    path = store_path
+    path = StorePath
     for layer in LayterList:
-        # print(store_path, layer)
+        # print(StorePath, layer)
         path = os.path.join(path, layer)
         try:
             os.mkdir(path)
@@ -39,7 +37,7 @@ def on_connect(client, userdata, flags, respons_code):
 def on_message(client, userdata, msg):
     makeStoreDir(msg.topic)
     print("subscribe START")
-    tempPath = os.path.join(store_path+msg.topic, dt.now().strftime("%Y%m%d-%H%M%S-%f"))
+    tempPath = os.path.join(StorePath+msg.topic, dt.now().strftime("%Y%m%d-%H%M%S-%f"))
     os.mkdir(tempPath)
     name = os.path.join(tempPath,"form.jpg")
     with open(name, "wb") as fh:

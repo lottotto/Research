@@ -1,6 +1,6 @@
 import image_predict
 import Checkbox_reco
-import Other_reco
+#import Other_reco
 import cv2
 import numpy as np
 
