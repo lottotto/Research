@@ -47,7 +47,7 @@ def makeFilePATH(Number,SheatPATH):
 def publish(Host, Topic, CastDefCsv, SheatPATH):
     message,code = makeSendJSON(CastDefCsv, SheatPATH)
     print(message)
-    sendTopic = os.path.join(re.sub('pic', 'ocr', Topic), "sh"+code)
+    sendTopic = os.path.join(re.sub('pic', 'app', Topic), "sh"+code)
     print(sendTopic)
     def on_connect(client, userdata, flags, respons_code):
         client.publish(sendTopic, message)

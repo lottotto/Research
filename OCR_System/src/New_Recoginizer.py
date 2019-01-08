@@ -15,7 +15,8 @@ def detect_space(PathToImage):
 
 def Recognizer(PathToImage, RecoType):
     if RecoType == 'other':
-        return Other_reco.other_Recognization(PathToImage)
+        return "Need PyOCR"
+        # return Other_reco.other_Recognization(PathToImage)
     elif RecoType == 'checkbox':
         return Checkbox_reco.main(PathToImage)
     else:

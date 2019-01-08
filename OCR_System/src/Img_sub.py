@@ -10,8 +10,8 @@ host = sys.argv[1]
 port = 1883
 topic =sys.argv[2]
 StorePath = sys.argv[3]
-PathToCastDefCsv = './Resource/CastDef20180919.csv'
-PathToSheatStyle = './Resource/OCR_style20180919.csv'
+PathToCastDefCsv = './Resource/CastDef.csv'
+PathToSheatStyle = './Resource/OCR_style.csv'
 # topic /disfor/training/18000/shelter/pic
 
 def makeStoreDir(subTopic):
