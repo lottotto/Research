@@ -7,7 +7,7 @@ import sys
 
 A4WIDTH_MM = 210
 DocSize = (182, 269)
-template = cv2.imread('./Resource/60_marker.png',0)
+template = cv2.imread('./resource/60_marker.png',0)
 #template = cv2.imread('./Resource/100_marker.jpg',0) #style_csv作るときはこっち
 marker_shape = template.shape[::-1]
 
