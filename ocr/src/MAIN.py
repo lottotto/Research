@@ -23,4 +23,4 @@ def main(srcPATH, StyleCsvPath):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], StyleCsvPath='./Resource/OCR_style20180919.csv')
+    main(sys.argv[1], StyleCsvPath='./resource/OCR_style.csv')
