@@ -105,6 +105,7 @@ class CalcRemarkProblem():
     def research_info_risk(self):
         format_datetime = "%Y-%m-%d-%H:%M:%S"
         now_date = self.document.get('date')
+        print(self.document)
         previous_date = self.document.get('previous_date')
         if previous_date is None:
             return '特になし'

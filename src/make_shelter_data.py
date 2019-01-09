@@ -17,7 +17,7 @@ import sys
 import imp
 
 format_sensor_datetime = "%Y-%m-%d-%H:%M:%S"
-format_app_datetime = "%Y-%m-%d-%H:%M"
+format_app_datetime = "%Y-%m-%d-%H:%M:%S"
 host = 'www.ds.se.shibaura-it.ac.jp'
 topic_base = '/saito/test/201901/shelter/'
 
@@ -135,8 +135,8 @@ def shelter_cicle(shelter_info, start_time):
     hum_min = max(hum_max-random.randint(0,50), 0)
     lux_mean = random.choice([0,200,400])
     co2_mean = 400
-    for i in range(24):
-        if i == 10 and random.randint(1,100) > 10:
+    for i in range(12):
+        if i == 3 and random.randint(1,100) > 10:
             topic = topic_base+'app/{}'.format(shelter_info['code'])
             date = start_time+datetime.timedelta(hours=i)
             date = date.strftime(format_app_datetime)
@@ -153,7 +153,7 @@ def shelter_cicle(shelter_info, start_time):
         send_data = json.dumps(sensor_data,ensure_ascii=False)
 #         print(send_data)
         publish(host,topic,send_data, cl_id=shelter_info['code'])
-        sleep(20+random.randint(-5,5))
+        sleep(10+random.randint(-5,5))
 
 # In[204]:
 def main(serial_num):
