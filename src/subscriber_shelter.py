@@ -93,7 +93,7 @@ def publish_recode(topic):
     code = topic.split('/')[-1]
     document = collection.find_one({"code":code})
     del document['_id']
-    print(document)
+    # print(document)
     document['problem'] = analysis_problems(document)
     pub_message = json.dumps(document, ensure_ascii=False)
     pub_topic = re.sub("sensor|app", "recode", topic)
