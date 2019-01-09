@@ -103,11 +103,14 @@ class CalcRemarkProblem():
 
     #調査できているかのリスク
     def research_info_risk(self):
-        questionnaire_strtime = self.document.get('questionnaire_time')
-        if questionnaire_strtime is None:
-            return "情報収拾不安定リスクあり"
-        questionnaire_dt = datetime.datetime.strptime(questionnaire_strtime, "%Y-%m-%d-%H:%M:%S")
-        if datetime.datetime.now() - questionnaire_dt > datetime.timedelta(days=2):
+        format_datetime = "%Y-%m-%d-%H:%M:%S"
+        now_date = self.document.get('date')
+        previous_date = self.document.get('previous_date')
+        if previous_date is None:
+            return '特になし'
+        now_date_dt = datetime.datetime.strptime(now_date, format_datetime)
+        previous_date_dt = datetime.datetime.strptime(previous_date,format_datetime)
+        if now_date_dt - previous_date_dt > datetime.timedelta(days=2):
             return "情報収拾不安定リスクあり"
         else:
             return "特になし"

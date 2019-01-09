@@ -48,6 +48,7 @@ def insert_questionnaire_data(json_data, topic):
         collection.insert(json_data)
     else:
         document = collection.find_one({"code":code})
+        document['previous_date'] = document['data']
         for key, value in json_data.items():
             document[key] = value
         collection.save(document)
