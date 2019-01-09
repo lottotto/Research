@@ -26,7 +26,7 @@ def makeSendJSON(CastDefCsv, SheatPATH):
         #空白の削除
         temp_Result = temp_Result.replace('-','')
         ResultDict[row[1]] = temp_Result
-    ResultDict['date'] = "20"+ResultDict['year']+"-"+ResultDict['month']+"-"+ResultDict['day']+'-'+ResultDict['hour']+':'+ResultDict['minute']
+    ResultDict['date'] = "20"+ResultDict['year']+"-"+ResultDict['month']+"-"+ResultDict['day']+'-'+ResultDict['hour']+':'+ResultDict['minute']+':00'
     del ResultDict['year']
     del ResultDict['month']
     del ResultDict['day']
