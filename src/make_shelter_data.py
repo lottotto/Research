@@ -160,7 +160,7 @@ def main(serial_num):
     # start_time = datetime.datetime(2019,1,1,0,0)
     corrent_datetime = datetime.datetime.now()
     shelter_infos = []
-    for i in range(100):
+    for i in range(10):
         shelter_name = "第{}-{}避難所".format(serial_num,i)
         shelter_code = "sh990{}{}".format(serial_num,str(i).zfill(3))
         shelter_infos.append(set_dict_data(shelter_name, shelter_code))

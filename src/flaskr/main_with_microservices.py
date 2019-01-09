@@ -41,6 +41,7 @@ def show_detail(db_name='', collection_name=''):
     for entry in temp_entries:
         if entry['problem'] != []:
             entries.append(entry)
+            print(entry['problem'])
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
         send_message(request.form['user_id'],request.form['message'],db_name,collection_name)
@@ -50,12 +51,17 @@ def show_detail(db_name='', collection_name=''):
 
 @app.route('/shelter/<db_name>/<collection_name>/summary.html', methods=['GET','POST'])
 def show_summary(db_name='', collection_name=''):
-    temp_list = make_document_list("flask_"+db_name, collection_name) #コレクション内にある全ての避難所の状態をリストにしたもの
+    temp_entries = make_document_list("flask_"+db_name, collection_name) #コレクション内にある全ての避難所の状態をリストにしたもの
+    entries = []
+    for entry in temp_entries:
+        if entry['problem'] != []:
+            entries.append(entry)
+            print(entry['problem'])
     # entries = list(map(calc_remark, temp_list))
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
         send_message(request.form['user_id'],request.form['message'],db_name,collection_name)
-    return render_template('summary.html', summary_entries=temp_list, Line_entries=Line_entries)
+    return render_template('summary.html', summary_entries=entries, Line_entries=Line_entries)
 
 
 @app.route('/', methods=['GET', "POST"])
