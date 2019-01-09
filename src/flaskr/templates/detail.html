@@ -39,11 +39,14 @@
               <tr>
                 <td>{{ entry.name }}</td>
                 <td>{{ entry.code }}</td>
-                <td>{{ entry.sensor.time }}</td>
-                <td>{{ entry.sensor.tmp }}</td>
-                <td>{{ entry.sensor.hum }}</td>
-                <td>{{ entry.sensor.lux }}</td>
-                <td>{{ entry.sensor.co2 }}</td>
+                {% if entry.sensor %}
+                  <td>{{ entry.sensor.time }}</td>
+                  <td>{{ entry.sensor.tmp }}</td>
+                  <td>{{ entry.sensor.hum }}</td>
+                  <td>{{ entry.sensor.lux }}</td>
+                  <td>{{ entry.sensor.co2 }}</td>
+                {% else %}
+                <td>センサーデータが来ていません</ td>
                 <td>{{ entry.remark }}</td>
               </tr>
               {% else %}
