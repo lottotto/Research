@@ -12,8 +12,8 @@ host = env_data["host"]
 port = 1883
 topic =env_data["topic"]
 store_path = env_data["store_path"]
-cast_def_path = './Resource/CastDef.csv'
-style_def_path = './Resource/OCR_style.csv'
+cast_def_path = './resource/CastDef.csv'
+style_def_path = './resource/OCR_style.csv'
 # topic /disfor/training/18000/shelter/pic
 
 def makeStoreDir(subTopic):
@@ -44,14 +44,12 @@ def on_message(client, userdata, msg):
     name = os.path.join(tempPath,"form.jpg")
     with open(name, "wb") as fh:
         fh.write(base64.decodebytes(msg.payload))
-    print("Image Saved in Path:{}".format(name))
+    print("Image Saved({})".format(name))
     MAIN.main(srcPATH=name, StyleCsvPath=style_def_path)
+    print("{} DONE OCR".format(name))
     sheat_path = os.path.join(tempPath,"corrected.jpg")
-    try:
-        CastResult_Publish.publish(Host=host, Topic=msg.topic, CastDefCsv=cast_def_path, SheatPATH=sheat_path)
-        print("{} DONE OCR".format(name))
-    except:
-        pass
+    CastResult_Publish.publish(Host=host, Topic=msg.topic, CastDefCsv=cast_def_path, SheatPATH=sheat_path)
+    print("{} Publish DONE".format(name))
 
 
 if __name__ == '__main__':
