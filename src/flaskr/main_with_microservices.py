@@ -31,7 +31,7 @@ def send_message(user_id, message, db_name, collection_name):
 def make_document_list(db_name, collection_name, search_condition=None):
     mongo_app = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
     ret_list = [document for document in mongo_app.db[collection_name].find(search_condition)]
-    ret_list = sorted(ret_list, key=lambda x:x['code'])
+    # ret_list = sorted(ret_list, key=lambda x:x['code'])
     return ret_list
 
 
@@ -40,6 +40,7 @@ def make_document_list(db_name, collection_name, search_condition=None):
 def show_detail(db_name='', collection_name=''):
     entries = make_document_list("flask_"+db_name, collection_name)
     # entries = sorted(entries,key=lambda x:x['code'])
+    entries = sorted(entries, key=lambda x:x['code'])
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
         send_message(request.form['user_id'],request.form['message'],db_name,collection_name)
@@ -54,6 +55,7 @@ def show_summary(db_name='', collection_name=''):
     for entry in temp_entries:
         if entry['problem'] != []:
             entries.append(entry)
+    entries = sorted(entries, key=lambda x:x['code'])
     # entries = list(map(calc_remark, temp_list))
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
