@@ -114,7 +114,7 @@ def publish(host, topic, message, cl_id):
 
 tmp_predict_model = pkl.load(open("temp_pred_model.pkl",'rb'))
 hum_predict_model = pkl.load(open("humi_pred_model.pkl",'rb'))
-start_time = datetime.datetime(2019,1,1,0,0)
+
 def shelter_cicle(shelter_info, start_time):
 
     def make_sensor_data_per_hour(tmp_max, tmp_min, hum_max, hum_min, lux_mean, co2_mean, hours):
@@ -136,7 +136,7 @@ def shelter_cicle(shelter_info, start_time):
     lux_mean = random.choice([0,200,400])
     co2_mean = 400
     for i in range(24):
-        if i == 10:
+        if i == 10 and random.randint(1,100) > 10:
             topic = topic_base+'app/{}'.format(shelter_info['code'])
             date = start_time+datetime.timedelta(hours=i)
             date = date.strftime(format_app_datetime)
@@ -157,23 +157,26 @@ def shelter_cicle(shelter_info, start_time):
 
 # In[204]:
 def main(serial_num):
-    # mqtt_clients = [mqtt.Client(client_id=str(i)) for i in range(100)]
+    # start_time = datetime.datetime(2019,1,1,0,0)
+    corrent_datetime = datetime.datetime.now()
     shelter_infos = []
-    for i in range(150):
-        shelter_name = "第{}避難所".format(i)
+    for i in range(100):
+        shelter_name = "第{}-{}避難所".format(serial_num,i)
         shelter_code = "sh990{}{}".format(serial_num,str(i).zfill(3))
         shelter_infos.append(set_dict_data(shelter_name, shelter_code))
 
     # print(shelter_infos[0], len(shelter_infos))
-    thread_list = []
-    for info in shelter_infos:
-        thread = threading.Thread(target=shelter_cicle,args=(info, start_time))
-        thread_list.append(thread)
-    for thread in thread_list:
-        thread.start()
+    for i in range(7):
+        corrent_datetime = corrent_datetime + datetime.timedelta(days=i)
+        thread_list = []
+        for info in shelter_infos:
+            thread = threading.Thread(target=shelter_cicle,args=(info, corrent_datetime))
+            thread_list.append(thread)
+        for thread in thread_list:
+            thread.start()
 
-    for thread in thread_list:
-        thread.join()
+        for thread in thread_list:
+            thread.join()
 
 if __name__ == '__main__':
     main(sys.argv[1])
