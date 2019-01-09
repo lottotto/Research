@@ -98,7 +98,7 @@ def recode_subscribe():
         client.subscribe(sub_recode_topic)
 
     def on_message(client, userdata, msg):
-        print("Subscribe:{}\tTopic:{}\tpayload:{}".format(dt.now().strftime(dt_formats), msg.topic, msg.payload.decode()))
+        print("Subscribe:{}\tTopic:{}\tpayload:{}".format(dt.now().strftime("%Y-%m-%d-%H:%M:%S.%f"), msg.topic, msg.payload.decode()))
         topic = msg.topic
         code = topic.split('/')[-1]
         json_data = json.loads(msg.payload.decode())

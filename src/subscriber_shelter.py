@@ -104,7 +104,7 @@ def publish_recode(topic):
 
 
 def on_message(client, userdata, msg):
-    now = dt.now().strftime(format_datetime_string)
+    now = dt.now().strftime("%Y-%m-%d-%H:%M:%S.%f")
     receive_json_data = json.loads(msg.payload.decode())
     print("{}\t{}\t{}".format(now, msg.topic, msg.payload.decode()))
 
