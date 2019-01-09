@@ -41,7 +41,6 @@ def show_detail(db_name='', collection_name=''):
     for entry in temp_entries:
         if entry['problem'] != []:
             entries.append(entry)
-            print(entry['problem'])
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
         send_message(request.form['user_id'],request.form['message'],db_name,collection_name)
