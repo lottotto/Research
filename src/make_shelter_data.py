@@ -168,6 +168,7 @@ def main(serial_num):
     # print(shelter_infos[0], len(shelter_infos))
     for i in range(7):
         corrent_datetime = corrent_datetime + datetime.timedelta(days=i)
+        print(corrent_datetime)
         thread_list = []
         for info in shelter_infos:
             thread = threading.Thread(target=shelter_cicle,args=(info, corrent_datetime))
