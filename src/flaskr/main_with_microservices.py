@@ -36,7 +36,11 @@ def make_document_list(db_name, collection_name, search_condition=None):
 
 @app.route('/shelter/<db_name>/<collection_name>/detail.html', methods=['GET','POST'])
 def show_detail(db_name='', collection_name=''):
-    entries = make_document_list("flask_"+db_name, collection_name)
+    temp_entries = make_document_list("flask_"+db_name, collection_name)
+    entries = []
+    for entry in temp_entries:
+        if entry['problem'] != []:
+            entries.append(entry)
     Line_entries = make_document_list('LINE_'+db_name, collection_name)
     if request.method == 'POST':
         send_message(request.form['user_id'],request.form['message'],db_name,collection_name)
