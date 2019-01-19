@@ -1,0 +1,18 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Shelter Data Heatmap{% endblock %}
+{% block content %}
+
+<div class="container">
+  <a href="./detail.html">詳細情報</a><a href="./summary.html">要約情報</a> <a href="./heatmap.html">相関情報</a>
+  {% if raw_img_url %}
+  <img src="{{ heatmap_img_url }}">
+  {% endif %}
+
+  {% for result in results %}
+  <tr>result</tr>
+  {% else %}
+  <tr>相関関係はありません</tr>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -62,11 +62,11 @@ def insert_sensor_data(json_data,topic):
     code = topic.split('/')[-1]
 
     if collection.find_one({"code":code}) is None:
-        document = {"code":code,"sensor":json_data}
+        document = {"code":code,"sensor":[json_data]}
         collection.insert(document)
     else:
         document = collection.find_one({"code":code})
-        document['sensor'] = json_data
+        document['sensor'].append(json_data)
         collection.save(document)
 
 
@@ -95,6 +95,7 @@ def publish_recode(topic):
     del document['_id']
     # print(document)
     document['problem'] = analysis_problems(document)
+    document['sensor_data'] = document['sensor_data'][-1]
     pub_message = json.dumps(document, ensure_ascii=False)
     pub_topic = re.sub("sensor|app", "recode", topic)
     publish(host=mqtt_host, topic=pub_topic, message=pub_message)

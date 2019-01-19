@@ -8,6 +8,8 @@ from flask_pymongo import PyMongo
 from flask_bootstrap import Bootstrap
 from collections import defaultdict
 
+import env_corr_heatmap
+
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 dt_formats = "%Y-%m-%d-%H:%M:%S"
@@ -63,9 +65,17 @@ def show_summary(db_name='', collection_name=''):
     return render_template('summary.html', summary_entries=entries, Line_entries=Line_entries)
 
 
+@app.route('/shelter/<db_name>/<collection_name>/heatmap.html', methods=['GET'])
+def show_correlation(db_name='', collection_name=''):
+    all_recode = make_document_list("flask_"+db_name, collection_name)
+    url, result_list = env_corr_heatmap.main(all_recode,db_name, collection_name)
+    return render_template('heatmap.html', heatmap_img_url=url,results=result_list)
+
+
 @app.route('/', methods=['GET', "POST"])
 def top_page():
     return "URLにdb_nameとcollection_nameをつけてね"
+
 
 def setting_Mongo(topic, mode):
     db_name = mode + topic.split('/')[2] #sub_test, sub_training, sub_default
@@ -73,6 +83,7 @@ def setting_Mongo(topic, mode):
     mongo_app = PyMongo(app, uri="mongodb://localhost:27017/{}".format(db_name))
     collection = mongo_app.db[collection_name]
     return db_name, collection
+
 
 def line_subscribe():
     sub_line_topic = "/saito/+/+/shelter/line/#"
@@ -90,6 +101,7 @@ def line_subscribe():
     sub_client.on_message = on_message
     sub_client.connect(host=MQTT_BROKER_ADDRESS)
     sub_client.loop_forever()
+
 
 def recode_subscribe():
     sub_recode_topic = "/saito/+/+/shelter/recode/#"

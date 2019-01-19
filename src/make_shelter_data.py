@@ -16,9 +16,12 @@ import threading
 import sys
 import imp
 
+N = 300
+
 format_sensor_datetime = "%Y-%m-%d-%H:%M:%S"
 format_app_datetime = "%Y-%m-%d-%H:%M:%S"
-host = 'www.ds.se.shibaura-it.ac.jp'
+host = "192.168.99.104"
+# host="www.ds.se.shibaura-it.ac.jp"
 topic_base = '/saito/test/201901/shelter/'
 
 
@@ -102,9 +105,10 @@ def set_dict_data(shelter_name, shelter_code):
 # In[152]:
 
 
-def publish(host, topic, message, cl_id):
-    mqtt_client = mqtt.Client(client_id=cl_id)
+def publish(host, topic, message,mqtt_client):
+    # mqtt_client = mqtt.Client()
     mqtt_client.connect(host)
+    sleep(1)
     mqtt_client.publish(topic, message)
     mqtt_client.disconnect()
 
@@ -115,7 +119,7 @@ def publish(host, topic, message, cl_id):
 tmp_predict_model = pkl.load(open("temp_pred_model.pkl",'rb'))
 hum_predict_model = pkl.load(open("humi_pred_model.pkl",'rb'))
 
-def shelter_cicle(shelter_info, start_time):
+def shelter_cicle(shelter_info, start_time, mqtt_client):
 
     def make_sensor_data_per_hour(tmp_max, tmp_min, hum_max, hum_min, lux_mean, co2_mean, hours):
         tmp_inputs = np.array([tmp_max, tmp_min] + [hours**(i+1) for i in range(3)]).reshape(-1,5)
@@ -135,15 +139,17 @@ def shelter_cicle(shelter_info, start_time):
     hum_min = max(hum_max-random.randint(0,50), 0)
     lux_mean = random.choice([0,200,400])
     co2_mean = 400
-    for i in range(12):
-        if i == 3 and random.randint(1,100) > 10:
+    for i in range(1):
+        if i == 0:# and random.randint(1,100) > 10:
+            sleep(10+random.uniform(-5,5))
             topic = topic_base+'app/{}'.format(shelter_info['code'])
             date = start_time+datetime.timedelta(hours=i)
             date = date.strftime(format_app_datetime)
             shelter_info['date'] = date
             send_data = json.dumps(shelter_info,ensure_ascii=False)
-            publish(host,topic, send_data, cl_id=shelter_info['code'])
-            sleep(5)
+            # mqtt_client.publish(topic, send_data)
+            publish(host,topic, send_data, mqtt_client=mqtt_client)
+            sleep(10+random.uniform(-5,5))
 
 #         print(tmp_max, tmp_min, hum_max, hum_min, lux_mean, co2_mean, i)
         sensor_data = make_sensor_data_per_hour(tmp_max, tmp_min, hum_max, hum_min, lux_mean, co2_mean, i)
@@ -152,27 +158,29 @@ def shelter_cicle(shelter_info, start_time):
         topic = topic_base+'sensor/{}'.format(shelter_info['code'])
         send_data = json.dumps(sensor_data,ensure_ascii=False)
 #         print(send_data)
-        publish(host,topic,send_data, cl_id=shelter_info['code'])
-        sleep(10+random.randint(-5,5))
+        mqtt_client.publish(topic, send_data)
+        publish(host,topic,send_data, mqtt_client)
+        sleep(10+random.uniform(-5,5))
 
 # In[204]:
 def main(serial_num):
     # start_time = datetime.datetime(2019,1,1,0,0)
     corrent_datetime = datetime.datetime.now()
     shelter_infos = []
-    for i in range(100):
+    for i in range(N):
         shelter_name = "第{}-{}避難所".format(serial_num,i)
         shelter_code = "sh990{}{}".format(serial_num,str(i).zfill(3))
         shelter_infos.append(set_dict_data(shelter_name, shelter_code))
 
+    mqtt_clinents = [mqtt.Client() for i in range(N)]
     # print(shelter_infos[0], len(shelter_infos))
-    for i in range(7):
+    for i in range(1):
         print('pre:{}'.format(corrent_datetime))
         corrent_datetime = corrent_datetime + datetime.timedelta(days=1)
         print('result:{}'.format(corrent_datetime))
         thread_list = []
-        for info in shelter_infos:
-            thread = threading.Thread(target=shelter_cicle,args=(info, corrent_datetime))
+        for info, mqtt_client in zip(shelter_infos, mqtt_clinents):
+            thread = threading.Thread(target=shelter_cicle,args=(info, corrent_datetime, mqtt_client))
             thread_list.append(thread)
         for thread in thread_list:
             thread.start()
