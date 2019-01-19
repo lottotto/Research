@@ -1,5 +1,5 @@
 import os
-import datetime as dt
+from datetime import datetime as dt
 import pickle as pkl
 import pandas as pd
 import seaborn as sns
