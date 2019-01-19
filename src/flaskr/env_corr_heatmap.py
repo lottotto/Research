@@ -70,5 +70,5 @@ def main(dict_list,db_name, col_name):
         plt.savefig('store_path')
         result_list = calc_correspond_index(df.corr())
         with open(store_path.replace('png', 'pkl'),'wb') as f:
-            pkl.dump(result_list)
+            pkl.dump(result_list, f)
         return store_path, result_list
