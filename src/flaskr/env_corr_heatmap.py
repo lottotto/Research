@@ -60,14 +60,17 @@ def main(dict_list,db_name, col_name):
             result_list = pkl.loads(f)
         return store_path, result_list
     else:
-        os.makedirs("fig/{}/{}".format(db_name, col_name))
+        try:
+            os.makedirs("fig/{}/{}".format(db_name, col_name))
+        except:
+            pass
         df = pd.DataFrame(dict_list)
         df = df[env_data_filter()]
         df = df.applymap(convert_chk)
         df = df.applymap(convert_alp)
         plt.figure(figsize=(10,10))
         sns.heatmap(df.corr())
-        plt.savefig('store_path')
+        plt.savefig(store_path)
         result_list = calc_correspond_index(df.corr())
         with open(store_path.replace('png', 'pkl'),'wb') as f:
             pkl.dump(result_list, f)
