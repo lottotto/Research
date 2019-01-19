@@ -15,6 +15,7 @@ bootstrap = Bootstrap(app)
 dt_formats = "%Y-%m-%d-%H:%M:%S"
 MQTT_BROKER_ADDRESS = "www.ds.se.shibaura-it.ac.jp"
 
+#flaskr内で実行する！
 
 def send_message(user_id, message, db_name, collection_name):
     # topicの例:"/saito/test/201801/shelter/msg/XXXXXX"

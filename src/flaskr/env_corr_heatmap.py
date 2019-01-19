@@ -54,14 +54,14 @@ def calc_correspond_index(corr_dataframe):
 
 def main(dict_list,db_name, col_name):
     date = dt.now().strftime('%Y-%m-%d-%H%M')
-    store_path = "fig/{}/{}/{}.png".format(db_name, col_name, date)
+    store_path = "templates/fig/{}/{}/{}.png".format(db_name, col_name, date)
     if os.path.exists(store_path):
         with open(store_path.replace('png', 'pkl'),'rb') as f:
             result_list = pkl.loads(f)
         return store_path, result_list
     else:
         try:
-            os.makedirs("fig/{}/{}".format(db_name, col_name))
+            os.makedirs("templates/fig/{}/{}".format(db_name, col_name))
         except:
             pass
         df = pd.DataFrame(dict_list)
