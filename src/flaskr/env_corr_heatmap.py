@@ -61,7 +61,7 @@ def main(dict_list,db_name, col_name):
         return store_path, result_list
     else:
         try:
-            os.makedirs("/shelter/{}/{}".format(db_name, col_name))
+            os.makedirs("./shelter/{}/{}".format(db_name, col_name))
         except:
             pass
         df = pd.DataFrame(dict_list)
