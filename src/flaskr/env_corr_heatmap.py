@@ -57,7 +57,7 @@ def main(dict_list,db_name, col_name):
     store_path = "./shelter/{}/{}/{}.png".format(db_name, col_name, date)
     if os.path.exists(store_path):
         with open(store_path.replace('png', 'pkl'),'rb') as f:
-            result_list = pkl.loads(f)
+            result_list = pkl.load(f)
         return store_path, result_list
     else:
         try:
