@@ -1,4 +1,5 @@
 import os
+import datetime as dt
 import pickle as pkl
 import pandas as pd
 import seaborn as sns
@@ -52,7 +53,7 @@ def calc_correspond_index(corr_dataframe):
     return ret_list
 
 def main(dict_list,db_name, col_name):
-    date = dict_list[0]['date'].strftime('%Y-%m-%d')
+    date = dt.now().strftime('%Y-%m-%d-%H%M')
     store_path = "fig/{}/{}/{}.png".format(db_name, col_name, date)
     if os.path.exists(store_path):
         with open(store_path.replace('png', 'pkl'),'rb') as f:
