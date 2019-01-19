@@ -58,7 +58,8 @@ def main(dict_list,db_name, col_name):
     if os.path.exists(store_path):
         with open(store_path.replace('png', 'pkl'),'rb') as f:
             result_list = pkl.load(f)
-        return store_path, result_list
+
+        return date+'.png', result_list
     else:
         try:
             os.makedirs("./shelter/{}/{}".format(db_name, col_name))
