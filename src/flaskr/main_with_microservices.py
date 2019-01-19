@@ -69,7 +69,7 @@ def show_summary(db_name='', collection_name=''):
 def show_correlation(db_name='', collection_name=''):
     all_recode = make_document_list("flask_"+db_name, collection_name)
     url, result_list = env_corr_heatmap.main(all_recode,db_name, collection_name)
-    return render_template('heatmap.html', heatmap_img_url=url,results=result_list)
+    return render_template('heatmap.html',img_url=url,results=result_list)
 
 
 @app.route('/', methods=['GET', "POST"])
