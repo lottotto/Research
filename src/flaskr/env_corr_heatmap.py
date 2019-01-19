@@ -54,7 +54,7 @@ def calc_correspond_index(corr_dataframe):
 
 def main(dict_list,db_name, col_name):
     date = dt.now().strftime('%Y-%m-%d-%H%M')
-    store_path = "templates/fig/{}/{}/{}.png".format(db_name, col_name, date)
+    store_path = "/shelter/{}/{}/{}.png".format(db_name, col_name, date)
     if os.path.exists(store_path):
         with open(store_path.replace('png', 'pkl'),'rb') as f:
             result_list = pkl.loads(f)
@@ -74,4 +74,4 @@ def main(dict_list,db_name, col_name):
         result_list = calc_correspond_index(df.corr())
         with open(store_path.replace('png', 'pkl'),'wb') as f:
             pkl.dump(result_list, f)
-        return store_path, result_list
+        return date+'.png', result_list
