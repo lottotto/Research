@@ -3,7 +3,7 @@ import json
 import threading
 import paho.mqtt.client as mqtt
 from datetime import datetime as dt
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 from flask_pymongo import PyMongo
 from flask_bootstrap import Bootstrap
 from collections import defaultdict
@@ -71,6 +71,11 @@ def show_correlation(db_name='', collection_name=''):
     all_recode = make_document_list("flask_"+db_name, collection_name)
     url, result_list = env_corr_heatmap.main(all_recode,db_name, collection_name)
     return render_template('heatmap.html',img_url=url,results=result_list)
+
+@app.route('/shelter/<db_name>/<collection_name>/<string:image_id>', methods=['GET'])
+def show_graph(db_name, collection_name, image_id):
+    return send_from_directory('./shelter/{}/{}/'.format(db_name, collection_name), image_id)
+
 
 
 @app.route('/', methods=['GET', "POST"])
