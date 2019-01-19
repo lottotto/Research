@@ -8,11 +8,13 @@
   <img src="{{ heatmap_img_url }}">
   {% endif %}
 
-  {% for result in results %}
-  <tr>{% result %}</tr>
-  {% else %}
-  <tr>相関関係はありません</tr>
-  {% endfor %}
+  <table>
+    {% for result in results %}
+    <tr>{% result %}</tr>
+      {% else %}
+    <tr>相関関係はありません</tr>
+    {% endfor %}
+  </table>
 </div>
 
 {% endblock %}
