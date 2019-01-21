@@ -1,4 +1,21 @@
 import datetime
+from pymongo import MongoClient
+import numpy as np
+from scipy import stats
+
+mongo_client = MongoClient('localhost', 27017)
+
+def setting_Mongo(topic):
+    db_name = "sub_" + topic.split('/')[2] #sub_test, sub_training, sub_default
+    collection_name = topic.split('/')[3]  #201801
+    db = mongo_client[db_name]
+    collection = db[collection_name]
+    return db, collection
+
+def make_document_list(db_name, collection_name, search_condition=None):
+    mongo_app = MongoClient(host="localhost",port=27017)
+    ret_list = [document for document in mongo_app.db[collection_name].find(search_condition)]
+    return ret_list
 
 class CalcRemarkProblem():
     def __init__(self, mongo_document):
@@ -115,6 +132,21 @@ class CalcRemarkProblem():
             return "情報収拾不安定リスクあり"
         else:
             return "特になし"
+
+    def detect_anomaly(topic):
+        db, collection = setting_Mongo(topic)
+        all_recode = [document for doucment in collection.find()]
+        all_sensor_recode = list(map(lambda x:x['sensor']), all_recode)
+        all_tmp_recode = list(map(lambda x:float(x['tmp']), all_sensor_recode))
+        all_tmp_recode = np.array(all_tmp_recode)
+        mean = all_tmp_recode.mean()
+        var = all_tmp_recode.var()
+        anomaly_score = (self.tmp - mean) ** 2 / var
+        threshold = stats.chi2.interval(0.99, 1)[1]
+        if anomaly_score > threshold:
+            return 'センサー異常可能性'
+        else:
+            return None
 
     def run(self):
         ret_list = []

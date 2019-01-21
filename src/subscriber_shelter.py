@@ -29,10 +29,12 @@ def setting_Mongo(topic):
 # In[5]:
 
 
-def analysis_problems(document):
+def analysis_problems(document, topic):
     # print("ana_pro", document)
     # problems = analysis(document)
-    problems = CalcRemarkProblem(document).run() #発生してると考えられる問題をリストで返す。
+    calc_remark_problem_instance = CalcRemarkProblem(document)
+    problems = calc_remark_problem_instance.run() #発生してると考えられる問題をリストで返す。
+    remark = calc_remark_problem_instance.detect_anomaly(topic)
     # print("analysis:", problems)
     return problems
 
@@ -94,7 +96,9 @@ def publish_recode(topic):
     document = collection.find_one({"code":code})
     del document['_id']
     # print(document)
-    document['problem'] = analysis_problems(document)
+    problem, remark = analysis_problems(document)
+    document['problem'] = problem
+    document['remark'] = remark
     document['sensor_data'] = document['sensor_data'][-1]
     pub_message = json.dumps(document, ensure_ascii=False)
     pub_topic = re.sub("sensor|app", "recode", topic)
